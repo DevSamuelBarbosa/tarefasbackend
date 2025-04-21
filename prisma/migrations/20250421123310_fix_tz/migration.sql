@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Tarefa" ALTER COLUMN "startedAt" SET DATA TYPE TIMESTAMPTZ(6);
