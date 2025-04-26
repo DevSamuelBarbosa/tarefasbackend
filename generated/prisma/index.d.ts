@@ -895,9 +895,10 @@ export namespace Prisma {
     descricao: string | null
     tempo_total: number | null
     status: string | null
-    iniciada_em: Date | null
     criada_em: Date | null
     atualizada_em: Date | null
+    iniciada_em: Date | null
+    finalizada_em: Date | null
   }
 
   export type TarefaMaxAggregateOutputType = {
@@ -906,9 +907,10 @@ export namespace Prisma {
     descricao: string | null
     tempo_total: number | null
     status: string | null
-    iniciada_em: Date | null
     criada_em: Date | null
     atualizada_em: Date | null
+    iniciada_em: Date | null
+    finalizada_em: Date | null
   }
 
   export type TarefaCountAggregateOutputType = {
@@ -917,9 +919,10 @@ export namespace Prisma {
     descricao: number
     tempo_total: number
     status: number
-    iniciada_em: number
     criada_em: number
     atualizada_em: number
+    iniciada_em: number
+    finalizada_em: number
     _all: number
   }
 
@@ -938,9 +941,10 @@ export namespace Prisma {
     descricao?: true
     tempo_total?: true
     status?: true
-    iniciada_em?: true
     criada_em?: true
     atualizada_em?: true
+    iniciada_em?: true
+    finalizada_em?: true
   }
 
   export type TarefaMaxAggregateInputType = {
@@ -949,9 +953,10 @@ export namespace Prisma {
     descricao?: true
     tempo_total?: true
     status?: true
-    iniciada_em?: true
     criada_em?: true
     atualizada_em?: true
+    iniciada_em?: true
+    finalizada_em?: true
   }
 
   export type TarefaCountAggregateInputType = {
@@ -960,9 +965,10 @@ export namespace Prisma {
     descricao?: true
     tempo_total?: true
     status?: true
-    iniciada_em?: true
     criada_em?: true
     atualizada_em?: true
+    iniciada_em?: true
+    finalizada_em?: true
     _all?: true
   }
 
@@ -1058,9 +1064,10 @@ export namespace Prisma {
     descricao: string | null
     tempo_total: number
     status: string
-    iniciada_em: Date | null
     criada_em: Date
     atualizada_em: Date
+    iniciada_em: Date | null
+    finalizada_em: Date | null
     _count: TarefaCountAggregateOutputType | null
     _avg: TarefaAvgAggregateOutputType | null
     _sum: TarefaSumAggregateOutputType | null
@@ -1088,9 +1095,10 @@ export namespace Prisma {
     descricao?: boolean
     tempo_total?: boolean
     status?: boolean
-    iniciada_em?: boolean
     criada_em?: boolean
     atualizada_em?: boolean
+    iniciada_em?: boolean
+    finalizada_em?: boolean
   }, ExtArgs["result"]["tarefa"]>
 
   export type TarefaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1099,9 +1107,10 @@ export namespace Prisma {
     descricao?: boolean
     tempo_total?: boolean
     status?: boolean
-    iniciada_em?: boolean
     criada_em?: boolean
     atualizada_em?: boolean
+    iniciada_em?: boolean
+    finalizada_em?: boolean
   }, ExtArgs["result"]["tarefa"]>
 
   export type TarefaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1110,9 +1119,10 @@ export namespace Prisma {
     descricao?: boolean
     tempo_total?: boolean
     status?: boolean
-    iniciada_em?: boolean
     criada_em?: boolean
     atualizada_em?: boolean
+    iniciada_em?: boolean
+    finalizada_em?: boolean
   }, ExtArgs["result"]["tarefa"]>
 
   export type TarefaSelectScalar = {
@@ -1121,12 +1131,13 @@ export namespace Prisma {
     descricao?: boolean
     tempo_total?: boolean
     status?: boolean
-    iniciada_em?: boolean
     criada_em?: boolean
     atualizada_em?: boolean
+    iniciada_em?: boolean
+    finalizada_em?: boolean
   }
 
-  export type TarefaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "titulo" | "descricao" | "tempo_total" | "status" | "iniciada_em" | "criada_em" | "atualizada_em", ExtArgs["result"]["tarefa"]>
+  export type TarefaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "titulo" | "descricao" | "tempo_total" | "status" | "criada_em" | "atualizada_em" | "iniciada_em" | "finalizada_em", ExtArgs["result"]["tarefa"]>
 
   export type $TarefaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Tarefa"
@@ -1137,9 +1148,10 @@ export namespace Prisma {
       descricao: string | null
       tempo_total: number
       status: string
-      iniciada_em: Date | null
       criada_em: Date
       atualizada_em: Date
+      iniciada_em: Date | null
+      finalizada_em: Date | null
     }, ExtArgs["result"]["tarefa"]>
     composites: {}
   }
@@ -1568,9 +1580,10 @@ export namespace Prisma {
     readonly descricao: FieldRef<"Tarefa", 'String'>
     readonly tempo_total: FieldRef<"Tarefa", 'Int'>
     readonly status: FieldRef<"Tarefa", 'String'>
-    readonly iniciada_em: FieldRef<"Tarefa", 'DateTime'>
     readonly criada_em: FieldRef<"Tarefa", 'DateTime'>
     readonly atualizada_em: FieldRef<"Tarefa", 'DateTime'>
+    readonly iniciada_em: FieldRef<"Tarefa", 'DateTime'>
+    readonly finalizada_em: FieldRef<"Tarefa", 'DateTime'>
   }
     
 
@@ -1957,9 +1970,10 @@ export namespace Prisma {
     descricao: 'descricao',
     tempo_total: 'tempo_total',
     status: 'status',
-    iniciada_em: 'iniciada_em',
     criada_em: 'criada_em',
-    atualizada_em: 'atualizada_em'
+    atualizada_em: 'atualizada_em',
+    iniciada_em: 'iniciada_em',
+    finalizada_em: 'finalizada_em'
   };
 
   export type TarefaScalarFieldEnum = (typeof TarefaScalarFieldEnum)[keyof typeof TarefaScalarFieldEnum]
@@ -2062,9 +2076,10 @@ export namespace Prisma {
     descricao?: StringNullableFilter<"Tarefa"> | string | null
     tempo_total?: IntFilter<"Tarefa"> | number
     status?: StringFilter<"Tarefa"> | string
-    iniciada_em?: DateTimeNullableFilter<"Tarefa"> | Date | string | null
     criada_em?: DateTimeFilter<"Tarefa"> | Date | string
     atualizada_em?: DateTimeFilter<"Tarefa"> | Date | string
+    iniciada_em?: DateTimeNullableFilter<"Tarefa"> | Date | string | null
+    finalizada_em?: DateTimeNullableFilter<"Tarefa"> | Date | string | null
   }
 
   export type TarefaOrderByWithRelationInput = {
@@ -2073,9 +2088,10 @@ export namespace Prisma {
     descricao?: SortOrderInput | SortOrder
     tempo_total?: SortOrder
     status?: SortOrder
-    iniciada_em?: SortOrderInput | SortOrder
     criada_em?: SortOrder
     atualizada_em?: SortOrder
+    iniciada_em?: SortOrderInput | SortOrder
+    finalizada_em?: SortOrderInput | SortOrder
   }
 
   export type TarefaWhereUniqueInput = Prisma.AtLeast<{
@@ -2087,9 +2103,10 @@ export namespace Prisma {
     descricao?: StringNullableFilter<"Tarefa"> | string | null
     tempo_total?: IntFilter<"Tarefa"> | number
     status?: StringFilter<"Tarefa"> | string
-    iniciada_em?: DateTimeNullableFilter<"Tarefa"> | Date | string | null
     criada_em?: DateTimeFilter<"Tarefa"> | Date | string
     atualizada_em?: DateTimeFilter<"Tarefa"> | Date | string
+    iniciada_em?: DateTimeNullableFilter<"Tarefa"> | Date | string | null
+    finalizada_em?: DateTimeNullableFilter<"Tarefa"> | Date | string | null
   }, "id">
 
   export type TarefaOrderByWithAggregationInput = {
@@ -2098,9 +2115,10 @@ export namespace Prisma {
     descricao?: SortOrderInput | SortOrder
     tempo_total?: SortOrder
     status?: SortOrder
-    iniciada_em?: SortOrderInput | SortOrder
     criada_em?: SortOrder
     atualizada_em?: SortOrder
+    iniciada_em?: SortOrderInput | SortOrder
+    finalizada_em?: SortOrderInput | SortOrder
     _count?: TarefaCountOrderByAggregateInput
     _avg?: TarefaAvgOrderByAggregateInput
     _max?: TarefaMaxOrderByAggregateInput
@@ -2117,9 +2135,10 @@ export namespace Prisma {
     descricao?: StringNullableWithAggregatesFilter<"Tarefa"> | string | null
     tempo_total?: IntWithAggregatesFilter<"Tarefa"> | number
     status?: StringWithAggregatesFilter<"Tarefa"> | string
-    iniciada_em?: DateTimeNullableWithAggregatesFilter<"Tarefa"> | Date | string | null
     criada_em?: DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
     atualizada_em?: DateTimeWithAggregatesFilter<"Tarefa"> | Date | string
+    iniciada_em?: DateTimeNullableWithAggregatesFilter<"Tarefa"> | Date | string | null
+    finalizada_em?: DateTimeNullableWithAggregatesFilter<"Tarefa"> | Date | string | null
   }
 
   export type TarefaCreateInput = {
@@ -2128,9 +2147,10 @@ export namespace Prisma {
     descricao?: string | null
     tempo_total?: number
     status?: string
-    iniciada_em?: Date | string | null
     criada_em?: Date | string
     atualizada_em?: Date | string
+    iniciada_em?: Date | string | null
+    finalizada_em?: Date | string | null
   }
 
   export type TarefaUncheckedCreateInput = {
@@ -2139,9 +2159,10 @@ export namespace Prisma {
     descricao?: string | null
     tempo_total?: number
     status?: string
-    iniciada_em?: Date | string | null
     criada_em?: Date | string
     atualizada_em?: Date | string
+    iniciada_em?: Date | string | null
+    finalizada_em?: Date | string | null
   }
 
   export type TarefaUpdateInput = {
@@ -2150,9 +2171,10 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     tempo_total?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     criada_em?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizada_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finalizada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TarefaUncheckedUpdateInput = {
@@ -2161,9 +2183,10 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     tempo_total?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     criada_em?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizada_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finalizada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TarefaCreateManyInput = {
@@ -2172,9 +2195,10 @@ export namespace Prisma {
     descricao?: string | null
     tempo_total?: number
     status?: string
-    iniciada_em?: Date | string | null
     criada_em?: Date | string
     atualizada_em?: Date | string
+    iniciada_em?: Date | string | null
+    finalizada_em?: Date | string | null
   }
 
   export type TarefaUpdateManyMutationInput = {
@@ -2183,9 +2207,10 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     tempo_total?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     criada_em?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizada_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finalizada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TarefaUncheckedUpdateManyInput = {
@@ -2194,9 +2219,10 @@ export namespace Prisma {
     descricao?: NullableStringFieldUpdateOperationsInput | string | null
     tempo_total?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
-    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     criada_em?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizada_em?: DateTimeFieldUpdateOperationsInput | Date | string
+    iniciada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finalizada_em?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2240,17 +2266,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2260,6 +2275,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type SortOrderInput = {
@@ -2273,9 +2299,10 @@ export namespace Prisma {
     descricao?: SortOrder
     tempo_total?: SortOrder
     status?: SortOrder
-    iniciada_em?: SortOrder
     criada_em?: SortOrder
     atualizada_em?: SortOrder
+    iniciada_em?: SortOrder
+    finalizada_em?: SortOrder
   }
 
   export type TarefaAvgOrderByAggregateInput = {
@@ -2288,9 +2315,10 @@ export namespace Prisma {
     descricao?: SortOrder
     tempo_total?: SortOrder
     status?: SortOrder
-    iniciada_em?: SortOrder
     criada_em?: SortOrder
     atualizada_em?: SortOrder
+    iniciada_em?: SortOrder
+    finalizada_em?: SortOrder
   }
 
   export type TarefaMinOrderByAggregateInput = {
@@ -2299,9 +2327,10 @@ export namespace Prisma {
     descricao?: SortOrder
     tempo_total?: SortOrder
     status?: SortOrder
-    iniciada_em?: SortOrder
     criada_em?: SortOrder
     atualizada_em?: SortOrder
+    iniciada_em?: SortOrder
+    finalizada_em?: SortOrder
   }
 
   export type TarefaSumOrderByAggregateInput = {
@@ -2360,20 +2389,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2386,6 +2401,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -2404,12 +2433,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2451,17 +2480,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2471,6 +2489,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2545,20 +2574,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2571,6 +2586,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
 

@@ -123,9 +123,10 @@ exports.Prisma.TarefaScalarFieldEnum = {
   descricao: 'descricao',
   tempo_total: 'tempo_total',
   status: 'status',
-  iniciada_em: 'iniciada_em',
   criada_em: 'criada_em',
-  atualizada_em: 'atualizada_em'
+  atualizada_em: 'atualizada_em',
+  iniciada_em: 'iniciada_em',
+  finalizada_em: 'finalizada_em'
 };
 
 exports.Prisma.SortOrder = {
