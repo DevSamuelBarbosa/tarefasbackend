@@ -24,6 +24,14 @@ model Tarefa {
   atualizada_em DateTime  @updatedAt @db.Timestamptz(6)
   iniciada_em   DateTime? @db.Timestamptz(6)
   finalizada_em DateTime? @db.Timestamptz(6)
+  Usuario       Usuario?  @relation(fields: [usuarioId], references: [id])
+  usuarioId     String?
 }
 
-
+model Usuario {
+  id      String   @id @default(uuid())
+  nome    String
+  email   String   @unique
+  senha   String
+  tarefas Tarefa[] // Relacionamento com tarefas
+}

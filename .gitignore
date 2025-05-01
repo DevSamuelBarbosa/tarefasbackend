@@ -5,3 +5,5 @@ package-lock.json
 
 # Não estou conseguindo remover a pasta /generate do git
 generated
+
+README-sbs.md

@@ -1,18 +1,17 @@
 import { RequestHandler } from 'express';
-import prisma from '../prisma/client';
+import prisma from '../../prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { DateTime } from 'luxon';
-
-const agoraBrasil = DateTime.now().setZone('America/Sao_Paulo').toJSDate();
 
 export const criarTarefa: RequestHandler = async (req, res) => {
 	const { titulo, descricao } = req.body;
+    const userId = (req as any).userId;
 
 	try {
 		const tarefa = await prisma.tarefa.create({
 			data: {
 				titulo,
 				descricao,
+                usuarioId: userId
 			},
 		});
 		res.status(201).json(tarefa);
@@ -24,15 +23,30 @@ export const criarTarefa: RequestHandler = async (req, res) => {
 
 export const iniciarTarefa: RequestHandler = async (req, res) => {
 	const { id } = req.params;
+    const userId = (req as any).userId;
+
 	try {
-		const tarefa = await prisma.tarefa.update({
-			where: { id },
-			data: {
-				status: 'ativa',
-				iniciada_em: agoraBrasil
-			},
-		});
-		res.status(201).json(tarefa);
+        const tarefa = await prisma.tarefa.findUnique({ where: { id } });
+
+        if (!tarefa) {
+            res.status(404).json({ error: 'Tarefa não encontrada' });
+            return;
+        }
+
+        if (tarefa.usuarioId !== userId) {
+            res.status(403).json({ error: 'Você não tem permissão para iniciar esta tarefa' });
+            return;
+        }
+
+        const tarefaAtualizada = await prisma.tarefa.update({
+        where: { id },
+        data: {
+            status: 'iniciada',
+            iniciada_em: new Date()
+        }
+        });
+
+        res.json(tarefaAtualizada);
 	} catch (err) {
 		res.status(500).json({ error: 'Erro ao iniciar tarefa' });
 	}
@@ -40,6 +54,7 @@ export const iniciarTarefa: RequestHandler = async (req, res) => {
 
 export const pausarTarefa: RequestHandler = async (req, res) => {
 	const { id } = req.params;
+    const userId = (req as any).userId;
 
 	try {
 		const tarefa = await prisma.tarefa.findUniqueOrThrow({ where: { id } });
@@ -48,6 +63,11 @@ export const pausarTarefa: RequestHandler = async (req, res) => {
 			res.status(400).json({ error: 'Tarefa não está ativa' });
 			return;
 		}
+
+        if (tarefa.usuarioId !== userId) {
+            res.status(403).json({ error: 'Você não tem permissão para pausar esta tarefa' });
+            return;
+        }
 
 		const now = new Date();
 		const diffSeconds = Math.floor((now.getTime() - tarefa.iniciada_em.getTime()) / 1000);
@@ -70,6 +90,7 @@ export const pausarTarefa: RequestHandler = async (req, res) => {
 
 export const listarTarefas: RequestHandler = async (req, res) => {
 	const { status, criadaEm, finalizadaEm } = req.query;
+    const userId = (req as any).userId;
 
 	try {
 		const where: any = {};
@@ -100,6 +121,10 @@ export const listarTarefas: RequestHandler = async (req, res) => {
 			};
 		}
 
+        if (userId) {
+            where.usuarioId = userId;
+        }
+
 		const tarefas = await prisma.tarefa.findMany({
 			where,
 			orderBy: { criada_em: 'desc' },
@@ -115,6 +140,8 @@ export const listarTarefas: RequestHandler = async (req, res) => {
 
 export const concluirTarefa: RequestHandler = async (req, res) => {
 	const { id } = req.params;
+    const userId = (req as any).userId;
+
 
 	try {
 		const tarefa = await prisma.tarefa.findUniqueOrThrow({ where: { id } });
@@ -123,6 +150,16 @@ export const concluirTarefa: RequestHandler = async (req, res) => {
 			res.status(400).json({ error: 'Não é possível concluir uma tarefa que está em andamento' });
 			return;
 		}
+
+        if (tarefa.status == 'concluída' && tarefa.finalizada_em != null){
+            res.status(400).json({ error: 'A tarefa já está concluída' });
+			return;
+        }
+
+        if (tarefa.usuarioId !== userId) {
+            res.status(403).json({ error: 'Você não tem permissão para concluir esta tarefa' });
+            return;
+        }
 
 		const now = new Date();
 
@@ -152,6 +189,7 @@ export const concluirTarefa: RequestHandler = async (req, res) => {
 
 export const removerTarefa: RequestHandler = async (req, res) => {
 	const { id } = req.params;
+    const userId = (req as any).userId;
 
 	try {
 
@@ -160,7 +198,12 @@ export const removerTarefa: RequestHandler = async (req, res) => {
 		if (tarefa.iniciada_em) {
 			res.status(400).json({ error: 'Não é possível remover uma tarefa que está em andamento' });
 			return;
-		}
+        }
+
+        if (tarefa.usuarioId !== userId) {
+            res.status(403).json({ error: 'Você não tem permissão para remover esta tarefa' });
+            return;
+        }
 
 		await prisma.tarefa.delete({ where: { id } });
 
