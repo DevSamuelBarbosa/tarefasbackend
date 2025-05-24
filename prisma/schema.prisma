@@ -33,5 +33,6 @@ model Usuario {
   nome    String
   email   String   @unique
   senha   String
+  token_jwt  String   @unique
   tarefas Tarefa[] // Relacionamento com tarefas
 }
