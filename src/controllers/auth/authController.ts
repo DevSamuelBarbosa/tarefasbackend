@@ -51,3 +51,28 @@ export const loginUsuario: RequestHandler = async (req, res) => {
 
 	res.json({ token: usuario.token_jwt });
 };
+
+export const usuarioLogado: RequestHandler = async (req, res) => {
+	const userId = (req as any).userId
+
+	try {
+		const usuario = await prisma.usuario.findUnique({
+			where: { id: userId },
+			select: {
+				id: true,
+				nome: true,
+				email: true,
+			},
+		})
+
+		if (!usuario) {
+			res.status(404).json({ error: 'Usuário não encontrado' })
+			return
+		}
+
+		res.json(usuario)
+	} catch (error) {
+		console.error('Erro ao buscar usuário logado:', error)
+		res.status(500).json({ error: 'Erro interno do servidor' })
+	}
+}

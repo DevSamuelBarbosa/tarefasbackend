@@ -27,7 +27,7 @@ export async function autenticarToken(req: Request, res: Response, next: NextFun
 
 		(req as any).userId = usuario.id;
 
-		next(); // tudo ok, vai para o próximo handler
+		next();
 	} catch (err) {
 		res.status(403).json({ error: 'Token inválido' });
 	}
