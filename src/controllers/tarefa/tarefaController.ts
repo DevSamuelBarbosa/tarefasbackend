@@ -93,19 +93,19 @@ export const listarTarefas: RequestHandler = async (req, res) => {
     const userId = (req as any).userId;
 
 	try {
-		const where: any = {};
+		const where: Record<string, any> = {};
 
-		if (status) {
+		if (status && typeof status === 'string') {
 			where.status = status;
 		}
 
-		if (criadaEm) {
-			const data = new Date(criadaEm as string);
-			const diaSeguinte = new Date(data);
-			diaSeguinte.setDate(data.getDate() + 1);
+        const dataCriadaEm = new Date(criadaEm as string);
+		if (!isNaN(dataCriadaEm.getTime())) {
+			const diaSeguinte = new Date(dataCriadaEm);
+			diaSeguinte.setDate(dataCriadaEm.getDate() + 1);
 
 			where.criada_em = {
-				gte: data,
+				gte: dataCriadaEm,
 				lt: diaSeguinte,
 			};
 		}
@@ -132,8 +132,8 @@ export const listarTarefas: RequestHandler = async (req, res) => {
 
 		res.json(tarefas);
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ error: 'Erro ao listar tarefas' });
+		console.error('[Listar Tarefas] Erro:', err);
+        res.status(500).json({ error: 'Erro ao listar tarefas' });
 	}
 };
 
