@@ -20,6 +20,51 @@ export const criarTarefa: RequestHandler = async (req, res) => {
 	}
 };
 
+export const buscarTarefa: RequestHandler = async (req, res) => {
+	const { id } = req.params;
+	const userId = (req as any).userId;
+
+	try {
+		const tarefa = await prisma.tarefa.findFirst({
+			where: { id, usuarioId: userId }
+		});
+
+		if (!tarefa) {
+			res.status(404).json({ error: 'Tarefa não encontrada' });
+            return;
+		}
+
+		res.json(tarefa);
+
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Erro ao buscar tarefa' });
+	}
+};
+
+export const atualizarTarefa: RequestHandler = async (req, res) => {
+	const { id } = req.params;
+	const { titulo, descricao } = req.body;
+	const userId = (req as any).userId;
+
+	try {
+		const tarefa = await prisma.tarefa.updateMany({
+			where: { id, usuarioId: userId },
+			data: { titulo, descricao }
+		});
+
+		if (tarefa.count === 0) {
+			res.status(404).json({ error: 'Tarefa não encontrada ou não pertence ao usuário' });
+            return;
+		}
+
+		res.json({ message: 'Tarefa atualizada com sucesso' });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Erro ao atualizar tarefa' });
+	}
+};
+
 
 export const iniciarTarefa: RequestHandler = async (req, res) => {
 	const { id } = req.params;
