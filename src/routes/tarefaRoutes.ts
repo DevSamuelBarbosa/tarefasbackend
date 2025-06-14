@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', autenticarToken, listarTarefas);
 router.get('/:id', autenticarToken, buscarTarefa);
-router.put('/:id', autenticarToken, atualizarTarefa);
+router.put('/editar/:id', autenticarToken, atualizarTarefa);
 router.post('/criar', autenticarToken, criarTarefa);
 router.put('/:id/iniciar', autenticarToken, iniciarTarefa);
 router.put('/:id/pausar', autenticarToken, pausarTarefa);
