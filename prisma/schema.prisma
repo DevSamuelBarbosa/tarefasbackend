@@ -16,8 +16,8 @@ datasource db {
 
 model Tarefa {
   id            String    @id @default(uuid())
-  titulo        String
-  descricao     String?
+  titulo        String    @db.VarChar(256)
+  descricao     String?   @db.VarChar(2000)
   tempo_total   Int       @default(0)
   status        String    @default("criada")
   criada_em     DateTime  @default(now()) @db.Timestamptz(6)
