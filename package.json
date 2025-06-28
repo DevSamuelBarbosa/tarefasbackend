@@ -3,12 +3,12 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-    "private": true,
+	"private": true,
 	"scripts": {
 		"build": "tsc",
 		"start": "ts-node src/index.ts",
-        "postinstall": "npx prisma generate",
-        "vercel-build": "npx prisma migrate deploy"
+		"postinstall": "npx prisma generate",
+		"vercel-build": "npx prisma migrate deploy"
 	},
 	"keywords": [],
 	"author": "",
@@ -19,7 +19,8 @@
 		"bcrypt": "^5.1.1",
 		"cors": "^2.8.5",
 		"express": "^5.1.0",
-		"jsonwebtoken": "^9.0.2"
+		"jsonwebtoken": "^9.0.2",
+		"serverless-http": "^3.2.0"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.2",
