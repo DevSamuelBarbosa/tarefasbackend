@@ -1,31 +1,13 @@
-# tarefasbackend
+O projeto tarefasbackend é um backend simples para gerenciar tarefas. Ele permite que usuários criem, atualizem, listem e excluam tarefas, além de marcar tarefas como concluídas. Basicamente, é uma API que faz o CRUD de tarefas e pode incluir autenticação para gerenciar permissões.
 
-- Para inicializar o server é só executar "npm run start"
-- Toda vez que alterar o tarefaController, tem que reiniciar o server
+## 🛠️ Tecnologias
+- Linguagem: Node.js + Express
+- Banco: PostgreSQL
+- Autenticação: JWT (JSON Web Tokens)
 
-### Quando adicionar coluna no schema.prisma tem que fazer
-```
-npx prisma migrate dev --name add-nome-da-coluna
-npx prisma generate
-```
-e executar isso depois:
-```
-rm -rf node_modules/.prisma
-rm -rf node_modules/@prisma/client
-rm -rf prisma/generated
-rm -rf generated/
-
-npm install prisma @prisma/client
-npx prisma generate
-```
-e por fim, dar CTRL+SHIFT+P -> Reload Window
-
-### Se ao executar 'npm run start' estourar o seguinte erro:
-```
-/home/github/tarefasbackend/node_modules/.prisma/client/default.js:43
-throw new Error('@prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.');
-...
-```
-#### Fazer:
-
-
+## ✅ Funcionalidades
+- Criar, listar, atualizar e deletar tarefas  
+- Filtrar tarefas por status (`pendente`, `concluída`)  
+- Marcar tarefas como concluídas  
+- Autenticação de usuário (login/cadastro)  
+- Controle de solicitações via middleware (logging, validação)
